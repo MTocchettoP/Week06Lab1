@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="ct" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="sait" uri="/WEB-INF/tlds/sait.tld" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,18 +14,15 @@
         <title>My Login</title>
     </head>
     <body>
-      
-        <h1>Login</h1>
-        <div>
-            <form action="login" method="post">
-               Username: <input type="text" name="username" value= ${userName}><br>
-               Password: <input type="password" name="password"  value= ${password}><br>
-               <input type="checkbox" name="remme" value ="remme" ${checked}>Remember me<br>
-                <input type="submit" value="login">
-            </form>
-            
-        </div>
-        ${errorMessage}
-        
+
+        <sait:debug>
+            <h1>Debug Info</h1>
+            Remote Host: ${pageContext.request.remoteHost}<br />
+            Session ID: ${pageContext.session.id}
+        </sait:debug>
+
+
+        <ct:loginForm checked="${checked}" errorMessage="${errorMessage}" password="${password}" userName="${userName}" />
+
     </body>
 </html>
